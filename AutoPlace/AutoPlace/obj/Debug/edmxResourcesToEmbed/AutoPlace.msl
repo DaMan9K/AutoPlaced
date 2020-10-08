@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище AutoModelContainer" CdmEntityContainer="AutoEntities">
+    <EntitySetMapping Name="Card">
+      <EntityTypeMapping TypeName="AutoModel.Card">
+        <MappingFragment StoreEntitySet="Card">
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="LicensePlate" ColumnName="LicensePlate" />
+          <ScalarProperty Name="PassportData" ColumnName="PassportData" />
+          <ScalarProperty Name="DateOfPurchase" ColumnName="DateOfPurchase" />
+          <ScalarProperty Name="DateOfFinish" ColumnName="DateOfFinish" />
+          <ScalarProperty Name="PlaceNumber" ColumnName="PlaceNumber" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Cars">
+      <EntityTypeMapping TypeName="AutoModel.Cars">
+        <MappingFragment StoreEntitySet="Cars">
+          <ScalarProperty Name="LicensePlate" ColumnName="LicensePlate" />
+          <ScalarProperty Name="TheModelOfCar" ColumnName="TheModelOfCar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Client">
+      <EntityTypeMapping TypeName="AutoModel.Client">
+        <MappingFragment StoreEntitySet="Client">
+          <ScalarProperty Name="PassportData" ColumnName="PassportData" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="DateOfIssuePassport" ColumnName="DateOfIssuePassport" />
+          <ScalarProperty Name="PassportIssuedBy" ColumnName="PassportIssuedBy" />
+          <ScalarProperty Name="CitizrnShip" ColumnName="CitizrnShip" />
+          <ScalarProperty Name="PlaceOfResidence" ColumnName="PlaceOfResidence" />
+          <ScalarProperty Name="ContactNumer" ColumnName="ContactNumer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Post">
+      <EntityTypeMapping TypeName="AutoModel.Post">
+        <MappingFragment StoreEntitySet="Post">
+          <ScalarProperty Name="Post1" ColumnName="Post" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Report">
+      <EntityTypeMapping TypeName="AutoModel.Report">
+        <MappingFragment StoreEntitySet="Report">
+          <ScalarProperty Name="IdReport" ColumnName="IdReport" />
+          <ScalarProperty Name="IdCard" ColumnName="IdCard" />
+          <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
+          <ScalarProperty Name="CheckInTime" ColumnName="CheckInTime" />
+          <ScalarProperty Name="CheckOutTime" ColumnName="CheckOutTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Worker">
+      <EntityTypeMapping TypeName="AutoModel.Worker">
+        <MappingFragment StoreEntitySet="Worker">
+          <ScalarProperty Name="IdWorker" ColumnName="IdWorker" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="SecondName" ColumnName="SecondName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="NumberOfDocument" ColumnName="NumberOfDocument" />
+          <ScalarProperty Name="Post" ColumnName="Post" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ec0075e41df440dfa03a4db56df9c37e" Name="Diagram1">
+        <EntityTypeShape EntityType="AutoModel.Card" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoModel.Cars" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoModel.Client" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoModel.Post" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoModel.Report" Width="1.5" PointX="5.25" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutoModel.Worker" Width="1.5" PointX="3" PointY="8.875" IsExpanded="true" />
+        <AssociationConnector Association="AutoModel.FK_Card_Cars" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoModel.FK_Card_Client" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoModel.FK_Report_Card" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoModel.FK_Worker_Post" ManuallyRouted="false" />
+        <AssociationConnector Association="AutoModel.FK_Report_Worker" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

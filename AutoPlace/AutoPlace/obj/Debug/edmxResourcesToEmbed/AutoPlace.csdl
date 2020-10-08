@@ -1,0 +1,162 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AutoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Card">
+    <Key>
+      <PropertyRef Name="IdCard" />
+    </Key>
+    <Property Name="IdCard" Type="Int32" Nullable="false" />
+    <Property Name="LicensePlate" Type="Int32" Nullable="false" />
+    <Property Name="PassportData" Type="Int32" Nullable="false" />
+    <Property Name="DateOfPurchase" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateOfFinish" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="PlaceNumber" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Cars" Relationship="Self.FK_Card_Cars" FromRole="Card" ToRole="Cars" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_Card_Client" FromRole="Card" ToRole="Client" />
+    <NavigationProperty Name="Report" Relationship="Self.FK_Report_Card" FromRole="Card" ToRole="Report" />
+  </EntityType>
+  <EntityType Name="Cars">
+    <Key>
+      <PropertyRef Name="LicensePlate" />
+    </Key>
+    <Property Name="LicensePlate" Type="Int32" Nullable="false" />
+    <Property Name="TheModelOfCar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Card" Relationship="Self.FK_Card_Cars" FromRole="Cars" ToRole="Card" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="PassportData" />
+    </Key>
+    <Property Name="PassportData" Type="Int32" Nullable="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DateOfIssuePassport" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PassportIssuedBy" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CitizrnShip" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="PlaceOfResidence" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ContactNumer" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Card" Relationship="Self.FK_Card_Client" FromRole="Client" ToRole="Card" />
+  </EntityType>
+  <EntityType Name="Post">
+    <Key>
+      <PropertyRef Name="Post1" />
+    </Key>
+    <Property Name="Post1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Worker" Relationship="Self.FK_Worker_Post" FromRole="Post" ToRole="Worker" />
+  </EntityType>
+  <EntityType Name="Report">
+    <Key>
+      <PropertyRef Name="IdReport" />
+    </Key>
+    <Property Name="IdReport" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IdCard" Type="Int32" Nullable="false" />
+    <Property Name="IdWorker" Type="Int32" Nullable="false" />
+    <Property Name="CheckInTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CheckOutTime" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Card" Relationship="Self.FK_Report_Card" FromRole="Report" ToRole="Card" />
+    <NavigationProperty Name="Worker" Relationship="Self.FK_Report_Worker" FromRole="Report" ToRole="Worker" />
+  </EntityType>
+  <EntityType Name="Worker">
+    <Key>
+      <PropertyRef Name="IdWorker" />
+    </Key>
+    <Property Name="IdWorker" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="SecondName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="NumberOfDocument" Type="Int32" Nullable="false" />
+    <Property Name="Post" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Post1" Relationship="Self.FK_Worker_Post" FromRole="Worker" ToRole="Post" />
+    <NavigationProperty Name="Report" Relationship="Self.FK_Report_Worker" FromRole="Worker" ToRole="Report" />
+  </EntityType>
+  <Association Name="FK_Card_Cars">
+    <End Role="Cars" Type="Self.Cars" Multiplicity="1" />
+    <End Role="Card" Type="Self.Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cars">
+        <PropertyRef Name="LicensePlate" />
+      </Principal>
+      <Dependent Role="Card">
+        <PropertyRef Name="LicensePlate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Card_Client">
+    <End Role="Client" Type="Self.Client" Multiplicity="1" />
+    <End Role="Card" Type="Self.Card" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Client">
+        <PropertyRef Name="PassportData" />
+      </Principal>
+      <Dependent Role="Card">
+        <PropertyRef Name="LicensePlate" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Report_Card">
+    <End Role="Card" Type="Self.Card" Multiplicity="1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Card">
+        <PropertyRef Name="IdCard" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="IdCard" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Worker_Post">
+    <End Role="Post" Type="Self.Post" Multiplicity="1" />
+    <End Role="Worker" Type="Self.Worker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Post">
+        <PropertyRef Name="Post1" />
+      </Principal>
+      <Dependent Role="Worker">
+        <PropertyRef Name="Post" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Report_Worker">
+    <End Role="Worker" Type="Self.Worker" Multiplicity="1" />
+    <End Role="Report" Type="Self.Report" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Worker">
+        <PropertyRef Name="IdWorker" />
+      </Principal>
+      <Dependent Role="Report">
+        <PropertyRef Name="IdWorker" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AutoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Card" EntityType="Self.Card" />
+    <EntitySet Name="Cars" EntityType="Self.Cars" />
+    <EntitySet Name="Client" EntityType="Self.Client" />
+    <EntitySet Name="Post" EntityType="Self.Post" />
+    <EntitySet Name="Report" EntityType="Self.Report" />
+    <EntitySet Name="Worker" EntityType="Self.Worker" />
+    <AssociationSet Name="FK_Card_Cars" Association="Self.FK_Card_Cars">
+      <End Role="Cars" EntitySet="Cars" />
+      <End Role="Card" EntitySet="Card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Card_Client" Association="Self.FK_Card_Client">
+      <End Role="Client" EntitySet="Client" />
+      <End Role="Card" EntitySet="Card" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Report_Card" Association="Self.FK_Report_Card">
+      <End Role="Card" EntitySet="Card" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Worker_Post" Association="Self.FK_Worker_Post">
+      <End Role="Post" EntitySet="Post" />
+      <End Role="Worker" EntitySet="Worker" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Report_Worker" Association="Self.FK_Report_Worker">
+      <End Role="Worker" EntitySet="Worker" />
+      <End Role="Report" EntitySet="Report" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
